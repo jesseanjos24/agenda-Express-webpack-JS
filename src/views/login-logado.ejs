@@ -1,0 +1,40 @@
+<%- include('includes/head')%>
+
+<%- include('includes/navbar')%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Login realizado com sucesso!</h1>
+      <p class="text-center lead">
+        Você está conectado como <strong><%= user.email %></strong>
+      </p>
+
+      <div class="row">
+        <div class="col-lg my-3">
+          <h4>Olá, <%= user.email.split('@')[0] %>! 👋</h4>
+          <p>
+            Que bom ter você por aqui. Comece a organizar sua agenda:
+            adicione, edite e acompanhe todos os seus contatos em um só lugar.
+          </p>
+
+          <!-- Link -->
+          <p>
+            <a href="/" class="btn">Ir para a agenda →</a>
+          </p>
+
+          <!-- Botão logo abaixo -->
+          <a href="/" class="btn btn-primary">Adicionar contato</a>
+
+          <%- include('includes/messages') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer')%>

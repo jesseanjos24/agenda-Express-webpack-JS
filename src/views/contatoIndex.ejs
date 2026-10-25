@@ -1,0 +1,75 @@
+<%- include('includes/head')%>
+
+<%- include('includes/navbar')%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8 my-3">
+      <% if(contato._id) { %>
+        <h1 class="text-center">Edite o contato de <%= contato.nome %></h1>
+        <p class="text-center lead">Preencha os campos abaixo</p>
+      <% } else { %>
+        <h1 class="text-center">Crie Seu Contato</h1>
+        <p class="text-center lead">Preencha os campos abaixo</p>
+      <% } %>
+
+      <div class="row">
+          <div class="col-lg my-3">
+
+            <%- include('includes/messages')%>
+
+            <h4>Contato:</h4>
+
+            <% if(contato._id) { %>
+            <form class="form-contato" action="/contato/edit/<%= contato._id %>" method="post">
+            <% } else { %>
+              <form class="form-contato" action="/contato/register" method="post">
+            <% } %>
+              <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+
+              <div class="mb-3">
+                <label class="form-label">Nome*</label>
+                <input value="<%= contato.nome %>" type="text" class="form-control" name="nome">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Sobrenome</label>
+                <input value="<%= contato.sobrenome %>" type="text" class="form-control" name="sobrenome">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Telefone*</label>
+                <input value="<%= contato.telefone %>" type="number" class="form-control" name="telefone">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Endereço</label>
+                <input value="<%= contato.endereco %>" type="text" class="form-control" name="endereco">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">E-mail</label>
+                <input value="<%= contato.email %>" type="email" class="form-control" name="email">
+              </div>
+
+              <% if(contato._id) { %>
+                <button type="submit" class="btn btn-primary">Editar contato</button>
+              <% } else { %>
+                <button type="submit" class="btn btn-primary">Salvar contato</button>
+              <% } %>
+            </form>
+          </div>
+      </div>
+      
+    </div>
+    <div class="col-lg-2">
+      
+    </div>
+  </div>
+
+</div>
+
+<%- include('includes/footer')%>
